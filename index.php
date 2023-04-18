@@ -10,7 +10,6 @@ if ($conn->connect_error) {
     die("Nie udało się połączyć z bazą danych: " . $conn->connect_error);
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -35,17 +34,13 @@ if ($conn->connect_error) {
 
         <?php
         if (isset($_POST['submit'])) {
-
             $sql = "SELECT * FROM users WHERE username='" . $_POST['username'] . "' AND password='" . $_POST['password'] . "'";
-            $result = mysqli_query($conn, $sql);
-
-            if (mysqli_num_rows($result) > 0) {
+            if (mysqli_num_rows(mysqli_query($conn, $sql)) > 0) {
                 echo "tak";
             } else {
                 echo "nie";
             }
         }
-        mysqli_close($conn);
         ?>
     </form>
 </body>
