@@ -33,15 +33,10 @@ if ($conn->connect_error) {
         <br>
         <input type="submit" value="Zaloguj" name="submit">
 
-
-
         <?php
         if (isset($_POST['submit'])) {
 
-            $login = $_POST['username'];
-            $password = $_POST['password'];
-
-            $sql = "SELECT * FROM users WHERE username='$login' AND password='$password'";
+            $sql = "SELECT * FROM users WHERE username='" . $_POST['username'] . "' AND password='" . $_POST['password'] . "'";
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) > 0) {
@@ -49,8 +44,6 @@ if ($conn->connect_error) {
             } else {
                 echo "nie";
             }
-
-            mysqli_close($conn);
         }
         ?>
     </form>
