@@ -45,6 +45,7 @@ if ($conn->connect_error) {
                 echo "nie";
             }
         }
+        mysqli_close($conn);
         ?>
     </form>
 </body>
